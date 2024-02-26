@@ -4,12 +4,18 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import { dbConnection } from './mongo.js';
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
         this.middlewares();
+        this.conectarDB();
+    }
+
+    async conectarDB(){
+        await dbConnection();
     }
 
     middlewares() {
