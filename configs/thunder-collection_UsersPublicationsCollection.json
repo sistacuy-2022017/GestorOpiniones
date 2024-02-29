@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "UsersPublicationsCollection",
+    "dateExported": "2024-02-29T03:59:59.537Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d924f55b-267b-453e-b7b4-4b1566fd9293",
+            "colId": "fea9e165-e397-4cb6-a39d-96d60edef5d2",
+            "containerId": "",
+            "name": "usersPublicationsPost",
+            "url": "http://localhost:3000/PublicationsApi/v1/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-28T23:07:31.218Z",
+            "modified": "2024-02-29T01:49:38.789Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"NombreUser\": \"Davi Arevalo\",\n  \"CorreoUser\": \"davi-2022062@kinal.edu.gt\",\n  \"PasswordUser\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
