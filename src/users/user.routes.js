@@ -1,0 +1,19 @@
+import { Router } from "express";
+import { check } from "express-validator";
+
+import { validarCampos } from "../middlewares/validar-campos.js";
+import { userPost } from "./user.controller.js";
+const routers = Router();
+
+routers.post(
+    "/",
+    [
+        check("NombreUser", "this name is require ").not().isEmpty(),
+        check("CorreoUser", "this email is require").isEmail(),
+        check("PasswordUser", "This password is require").isLength({min: 6,}),
+        validarCampos
+    ],
+    userPost
+);
+
+export default routers;
