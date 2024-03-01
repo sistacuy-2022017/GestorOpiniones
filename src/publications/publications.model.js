@@ -16,6 +16,10 @@ const PublicationSchema = mongoose.Schema({
     UserComentario: {
         type: String,
         required: [true, 'El comentario de usuario es obligatorio'],
+    },
+    EstadoPublication: {
+        type: Boolean,
+        default: true
     }
 });
 

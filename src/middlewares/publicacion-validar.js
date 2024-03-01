@@ -13,3 +13,11 @@ export const existePublicacionByName = async (Titulo = '') => {
         throw new Error(`el titulo ${Titulo} ya existe bro`);
     }
 }
+
+export const existePublicacionById = async (id = '') => {
+    const existPubId = await Publications.findOne({ id });
+
+    if(!existPubId){
+        throw new Error(`La Publicacion con el ${id} no existe`);
+    }
+}
