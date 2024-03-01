@@ -17,10 +17,14 @@ const PublicationSchema = mongoose.Schema({
         type: String,
         required: [true, 'El comentario de usuario es obligatorio'],
     },
+    PublicacionUsuarioId: {
+        type: String,
+        required: [true, 'el id del usuario es obligatorio'],
+    },
     EstadoPublication: {
         type: Boolean,
         default: true
-    }
+    },
 });
 
 export default mongoose.model('Publication', PublicationSchema);

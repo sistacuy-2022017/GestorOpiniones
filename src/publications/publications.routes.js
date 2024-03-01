@@ -4,7 +4,8 @@ import { check } from 'express-validator';
 import { publicationDelete, publicationPut, publicationsGet, publicationsPost } from './publications.controller.js';
 import { validarCampos } from '../middlewares/validar-campos.js';
 import { existePublicacionById, existePublicacionByName } from '../middlewares/publicacion-validar.js';
-
+import { validarJWT } from '../middlewares/validar-jwt.js';
+import {  verificarPropietario } from '../middlewares/publicacion-validar.js'
 
 routerin.get(
     "/",
@@ -25,15 +26,19 @@ routerin.post(
     publicationsPost
 );
 
+// Ruta PUT 
 routerin.put(
-    "/:id",
+    '/:id',
     [
-        check("id", "el id no es un formato valido de MongoDB").isMongoId(),
-        check("id").custom(existePublicacionById),
-        check("Titulo").custom(existePublicacionByName),
-        validarCampos
+        validarJWT,
+        verificarPropietario
     ],
+
     publicationPut
+
+  /*  async (req, res) => {
+        res.json({ msg: 'Publicación actualizada!' });
+    }*/
 );
 
 routerin.delete(
