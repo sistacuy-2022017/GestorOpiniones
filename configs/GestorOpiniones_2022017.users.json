@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "65e212b3502fdc50055a8b5d"
+  },
+  "NombreUser": "Diego Alvarez",
+  "CorreoUser": "dalvarez-2022277@kinal.edu.gt",
+  "PasswordUser": "$2a$10$QGAXDc6Xyg/ekqrqAk3Xo./h8VHAwBxpIZp7eRQG0lpHpWYj.FEPe",
+  "EstadoUser": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e2434c102ebf0adf553618"
+  },
+  "NombreUser": "Davi Arevalo",
+  "CorreoUser": "darevalo-2022062@kinal.edu.gt",
+  "PasswordUser": "$2a$10$T9hPuoJQLAJs4/syGynBJuwCGp5Y4k2pmaikGSA.OLmmH0rh2n4Eu",
+  "EstadoUser": true,
+  "__v": 0
+}]

@@ -5,7 +5,7 @@ import { publicationDelete, publicationPut, publicationsGet, publicationsPost } 
 import { validarCampos } from '../middlewares/validar-campos.js';
 import { existePublicacionById, existePublicacionByName } from '../middlewares/publicacion-validar.js';
 import { validarJWT } from '../middlewares/validar-jwt.js';
-import {  verificarPropietario } from '../middlewares/publicacion-validar.js'
+//import { verificarPropietario } from '../middlewares/publicacion-validar.js'
 
 routerin.get(
     "/",
@@ -28,24 +28,23 @@ routerin.post(
 
 // Ruta PUT 
 routerin.put(
-    '/:id',
+    "/:id",
     [
+        check("id", "The ID entered is not valid").isMongoId(),
+        check("id").custom(existePublicacionById),
         validarJWT,
-        verificarPropietario
+        validarCampos,
     ],
-
     publicationPut
-
-  /*  async (req, res) => {
-        res.json({ msg: 'Publicación actualizada!' });
-    }*/
 );
 
 routerin.delete(
     "/:id",
     [
         check("id", "el id no es un formato valido de MongoDB").isMongoId(),
-        check("id").custom(existePublicacionById),
+       // check("id").custom(existePublicacionById),
+        validarJWT,
+        validarCampos
     ],
     publicationDelete
 );

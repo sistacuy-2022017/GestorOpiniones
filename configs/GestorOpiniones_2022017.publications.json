@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "65e204f8a2887dc33e47abd8"
+  },
+  "Titulo": "Publicacion Practicas",
+  "Categoria": "noticia-practicasa",
+  "TextoPrincipal": "El alumno Istacuy no tiene practicas",
+  "UserComentario": "si no consigue practicas rapido se puede quedar sin",
+  "PublicacionUsuarioId": "65dfe2b2647dae54a3ae26b2",
+  "EstadoPublication": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e24de64c30f3b4a16f23f5"
+  },
+  "Titulo": "Publicacion Practicas22",
+  "Categoria": "noticia-practicasaasdafs",
+  "TextoPrincipal": "El alumno Istacuy no tafasiene practicas",
+  "UserComentario": "si no consigue practicas rfasafapido se puede quedar sin",
+  "PublicacionUsuarioId": "65e2434c102ebf0adf553618",
+  "EstadoPublication": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e37958542a6814e8c738bf"
+  },
+  "Titulo": "Publicacion Practicas222",
+  "Categoria": "otra-noticia-bro",
+  "TextoPrincipal": "lapruebatoken",
+  "UserComentario": "si no consigue token perdio",
+  "PublicacionUsuarioId": "65e212b3502fdc50055a8b5d",
+  "EstadoPublication": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e39942f5980cbcf0370d70"
+  },
+  "Titulo": "Publicacion Practicas224",
+  "Categoria": "noticia-Practicas224",
+  "TextoPrincipal": "lapruebatoken24",
+  "UserComentario": "si no consigue token perdio 24 veces",
+  "PublicacionUsuarioId": "65e212b3502fdc50055a8b5d",
+  "EstadoPublication": false,
+  "__v": 0
+}]

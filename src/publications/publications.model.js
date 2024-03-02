@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
 const PublicationSchema = mongoose.Schema({
     Titulo: {
@@ -19,6 +20,7 @@ const PublicationSchema = mongoose.Schema({
     },
     PublicacionUsuarioId: {
         type: String,
+        ref: "Users",
         required: [true, 'el id del usuario es obligatorio'],
     },
     EstadoPublication: {

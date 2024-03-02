@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "PublicationsCollection",
-    "dateExported": "2024-03-01T14:34:39.432Z",
+    "dateExported": "2024-03-02T21:31:05.818Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,12 +14,12 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-03-01T03:23:25.377Z",
-            "modified": "2024-03-01T14:32:16.213Z",
+            "modified": "2024-03-02T21:29:50.488Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"Titulo\": \"Publicacion Practicas\",\n  \"Categoria\": \"noticia-Practicas\",\n  \"TextoPrincipal\": \"El alumno Istacuy no tiene practicas\",\n  \"UserComentario\": \"si no consigue practicas rapido se puede quedar sin\"\n}",
+                "raw": "{\n  \"Titulo\": \"Publicacion Practicas225\",\n  \"Categoria\": \"noticia-Practicas225\",\n  \"TextoPrincipal\": \"lapruebatoken25\",\n  \"UserComentario\": \"si no consigue token perdio 24 veces\",\n  \"PublicacionUsuarioId\": \"65e212b3502fdc50055a8b5d\"\n}",
                 "form": []
             },
             "tests": []
@@ -29,16 +29,21 @@
             "colId": "323cff21-3f2b-4047-805e-f09757c9f867",
             "containerId": "",
             "name": "PublicationPut",
-            "url": "http://localhost:3000/PublicationsApi/v1/publication/65e1dda4e77badf8102c8bd3",
+            "url": "http://localhost:3000/PublicationsApi/v1/publication/65e37958542a6814e8c738bf",
             "method": "PUT",
             "sortNum": 30000,
             "created": "2024-03-01T13:50:27.221Z",
-            "modified": "2024-03-01T13:57:03.207Z",
-            "headers": [],
+            "modified": "2024-03-02T19:09:31.065Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMTJiMzUwMmZkYzUwMDU1YThiNWQiLCJpYXQiOjE3MDk0MDYwNzQsImV4cCI6MTcwOTQwOTY3NH0.a1GP9RTBO-ZGyKFEqcSUAd4zO4UJThoy6DvCdGS0ueg"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"Categoria\": \"noticia-ayer-hoy\"\n}",
+                "raw": "{\n  \"Categoria\": \"otra-noticia-bro\"\n}",
                 "form": []
             },
             "tests": []
@@ -62,12 +67,17 @@
             "colId": "323cff21-3f2b-4047-805e-f09757c9f867",
             "containerId": "",
             "name": "PublicationsDelete",
-            "url": "http://localhost:3000/PublicationsApi/v1/publication/65e1e6f0c3423ec07021c123",
+            "url": "http://localhost:3000/PublicationsApi/v1/publication/65e39942f5980cbcf0370d70",
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2024-03-01T14:32:32.753Z",
-            "modified": "2024-03-01T14:33:04.413Z",
-            "headers": [],
+            "modified": "2024-03-02T21:25:59.281Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMTJiMzUwMmZkYzUwMDU1YThiNWQiLCJpYXQiOjE3MDk0MTQzNzUsImV4cCI6MTcwOTQxNzk3NX0.3AQNKWbuljZ0GLLI66nlwRCodvGq5_GjimAluhm7y3Y"
+                }
+            ],
             "params": [],
             "tests": []
         }

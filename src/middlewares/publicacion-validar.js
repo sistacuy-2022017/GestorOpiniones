@@ -1,4 +1,6 @@
 import Publications from '../publications/publications.model.js';
+import Usuario from '../users/user.model.js'
+import { publicationPut } from '../publications/publications.controller.js';
 
 export const existePublicacionByName = async (Titulo = '') => {
     const tituloMin = Titulo.toLowerCase();
@@ -9,7 +11,7 @@ export const existePublicacionByName = async (Titulo = '') => {
         }
     });
 
-    if(existeTittle){
+    if (existeTittle) {
         throw new Error(`el titulo ${Titulo} ya existe bro`);
     }
 }
@@ -17,22 +19,7 @@ export const existePublicacionByName = async (Titulo = '') => {
 export const existePublicacionById = async (id = '') => {
     const existPubId = await Publications.findOne({ id });
 
-    if(!existPubId){
+    if (!existPubId) {
         throw new Error(`La Publicacion con el ${id} no existe`);
     }
-}
-
-// Middleware para verificar si es el propietario
-export const verificarPropietario = async (req, res, next) => {
-
-    const id = req.params.id;
-  
-    const publicacion = await Publications.findById(id);
-  
-    if(publicacion.Publications != req.userId) {
-       return res.status(401).json({msg: 'No autorizado'});
-    }
-  
-    next();
-    
 }

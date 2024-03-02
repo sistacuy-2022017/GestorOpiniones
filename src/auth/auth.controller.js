@@ -4,7 +4,7 @@ import bcryptjs from 'bcryptjs';
 import { generarJWT } from '../helpers/generar-jwt.js';
 //import { token } from 'morgan';
 
-export const login = async (req = request, res = response) => {
+export const login = async (req, res) => {
     const { NombreUser, CorreoUser, PasswordUser } = req.body;
 
     try {

@@ -1,5 +1,7 @@
 import { response, request } from 'express';
 import Publications from './publications.model.js';
+import Usuario from '../users/user.model.js';
+import jwt from 'jsonwebtoken';
 
 
 export const publicationsGet = async (req, res = response) => {
@@ -37,49 +39,121 @@ export const publicationsPost = async (req = request, res = response) => {
     });
 }
 
-export const publicationPut = async (req = request, res = response) => {
+export const publicationPut = async (req, res) => {
     const { id } = req.params;
-    const { _id, EstadoPublication, ...resto } = req.body;
-    await Publications.findByIdAndUpdate(id, resto);
+    const { _id, ...resto } = req.body;
 
-    const publica = await Publications.findOne({ _id: id });
+    try {
+        // Verificar el token JWT
+        const token = req.header('x-token');
+        if (!token) {
+            console.log('No hay token en la petición');
+            return res.status(401).json({ msg: 'No hay token en la petición' });
+        }
 
-    res.status(200).json({
-        msg: 'La publicacion se actualizo correctamente',
-        publica
-    });
-}
+        // Decodificar el token
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        } catch (error) {
+            console.error('Error al decodificar el token JWT:', error);
+            return res.status(401).json({ msg: 'Token JWT no válido' });
+        }
 
-/*export const publicationPut = async (req, res) => {
-    const { id } = req.params;
-    const usuario = req.user;
+        console.log('Token decodificado:', decoded);
 
-    // Buscamos la publicación
-    const publicacion = await Publications.findById(id);
+        const userId = decoded.uid;
 
-    // Verificamos que el usuario sea el propietario
-    if (publicacion.usuario.toString() !== usuario._id.toString()) {
-        return res.status(401).json({ msg: 'No autorizado' });
+        console.log('ID de usuario extraído del token:', userId);
+
+        // Buscar el usuario en la base de datos
+        const usuario = await Usuario.findById(userId);
+        if (!usuario) {
+            console.log('Usuario no encontrado en la base de datos');
+            return res.status(404).json({ msg: 'Usuario no encontrado' });
+        }
+
+        // Buscar la publicación en la base de datos
+        const publicacion = await Publications.findById(id);
+        if (!publicacion) {
+            console.log('Publicación no encontrada en la base de datos');
+            return res.status(404).json({ msg: 'Publicación no encontrada' });
+        }
+
+        // Verificar si el usuario es el propietario de la publicación
+        if (publicacion.PublicacionUsuarioId !== userId) {
+            console.log('El usuario no tiene permiso para actualizar esta publicación');
+            return res.status(403).json({ msg: 'No tienes permiso para actualizar esta publicación' });
+        }
+
+        // Actualizar la publicación
+        const publicacionActualizada = await Publications.findByIdAndUpdate(id, resto, { new: true });
+
+        // Respuesta exitosa con la publicación actualizada
+        res.status(200).json({
+            msg: 'Publicación actualizada',
+            publicacion: publicacionActualizada,
+        });
+    } catch (error) {
+        console.error('Error al actualizar la publicación:', error);
+        res.status(500).json({ error: 'Error al actualizar la publicación' });
     }
+};
 
-    // Si es el propietario, actualizamos
-    const { _id, EstadoPublicacion, ...resto } = req.body;
-
-    await Publications.findByIdAndUpdate(id, resto);
-
-    res.json({ msg: 'Publicación actualizada' });
-
-}*/
-
-export const publicationDelete = async (req = request, res = response) => {
+export const publicationDelete = async (req, res) => {
     const { id } = req.params;
-    await Publications.findByIdAndUpdate(id, { EstadoPublication: false });
 
-    const publicaa = await Publications.findOne({ _id: id });
+    try {
+        // Verificar el token JWT
+        const token = req.header('x-token');
+        if (!token) {
+            console.log('No hay token en la petición');
+            return res.status(401).json({ msg: 'No hay token en la petición' });
+        }
 
-    res.status(200).json({
-        msg: 'Publicacion borrada, insano',
-        publicaa
-    });
+        // Decodificar el token
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        } catch (error) {
+            console.error('Error al decodificar el token JWT:', error);
+            return res.status(401).json({ msg: 'Token JWT no válido' });
+        }
+        console.log('Token decodificado:', decoded);
 
-}
+        const userId = decoded.uid;
+        console.log('ID de usuario extraído del token:', userId);
+
+        // Buscar el usuario en la base de datos
+        const usuario = await Usuario.findById(userId);
+        if (!usuario) {
+            console.log('Usuario no encontrado en la base de datos');
+            return res.status(404).json({ msg: 'Usuario no encontrado' });
+        }
+
+        // Buscar la publicación en la base de datos
+        const publicacion = await Publications.findById(id);
+        if (!publicacion) {
+            console.log('Publicación no encontrada en la base de datos');
+            return res.status(404).json({ msg: 'Publicación no encontrada' });
+        }
+
+        // Verificar si el usuario es el propietario de la publicación
+        if (publicacion.PublicacionUsuarioId !== userId) {
+            console.log('El usuario no tiene permiso para eliminar esta publicación');
+            return res.status(403).json({ msg: 'No tienes permiso para eliminar esta publicación' });
+        }
+
+        await Publications.findByIdAndUpdate(id, { EstadoPublication: false });
+
+        const alumno = await Publications.findOne({ _id: id });
+
+        res.status(200).json({
+            msg: 'Publicacion Eliminada, se paso de joita',
+            alumno
+        });
+    } catch (error) {
+        console.error('Error al eliminar la publicación:', error);
+        res.status(500).json({ error: 'Error al eliminar la publicación' });
+    }
+};

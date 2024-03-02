@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "loginAllPublications",
-    "dateExported": "2024-03-01T14:34:21.536Z",
+    "dateExported": "2024-03-02T21:31:15.797Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,12 +14,12 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-29T22:00:32.243Z",
-            "modified": "2024-03-01T13:27:32.230Z",
+            "modified": "2024-03-02T19:01:14.702Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"NombreUser\": \"Davi Arevalo\",\n  \"PasswordUser\": \"123456\"\n}",
+                "raw": "{\n  \"NombreUser\": \"Diego Alvarez\",\n  \"PasswordUser\": \"123456\"\n}",
                 "form": []
             },
             "tests": []
