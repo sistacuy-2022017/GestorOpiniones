@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "PublicationsCollection",
-    "dateExported": "2024-03-02T21:31:05.818Z",
+    "dateExported": "2024-03-02T21:52:05.309Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -78,6 +78,20 @@
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUyMTJiMzUwMmZkYzUwMDU1YThiNWQiLCJpYXQiOjE3MDk0MTQzNzUsImV4cCI6MTcwOTQxNzk3NX0.3AQNKWbuljZ0GLLI66nlwRCodvGq5_GjimAluhm7y3Y"
                 }
             ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f1b43133-cb11-403c-872d-9e6cdc65ba46",
+            "colId": "323cff21-3f2b-4047-805e-f09757c9f867",
+            "containerId": "",
+            "name": "PublicationsById",
+            "url": "http://localhost:3000/PublicationsApi/v1/publication/65e212b3502fdc50055a8b5d",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-03-02T21:45:33.170Z",
+            "modified": "2024-03-02T21:47:02.288Z",
+            "headers": [],
             "params": [],
             "tests": []
         }

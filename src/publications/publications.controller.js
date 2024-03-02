@@ -39,6 +39,21 @@ export const publicationsPost = async (req = request, res = response) => {
     });
 }
 
+export const getPublicationById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Buscar todas las publicaciones del usuario por su ID
+        const publicaciones = await Publications.find({ PublicacionUsuarioId: id });
+
+        res.status(200).json({ publicaciones });
+    } catch (error) {
+        console.error('Error al obtener las publicaciones del usuario:', error);
+        res.status(500).json({ error: 'Error al obtener las publicaciones del usuario' });
+    }
+}
+
+
 export const publicationPut = async (req, res) => {
     const { id } = req.params;
     const { _id, ...resto } = req.body;

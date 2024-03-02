@@ -1,15 +1,23 @@
 import { Router } from 'express';
 const routerin = Router();
 import { check } from 'express-validator';
-import { publicationDelete, publicationPut, publicationsGet, publicationsPost } from './publications.controller.js';
+import { getPublicationById, publicationDelete, publicationPut, publicationsGet, publicationsPost } from './publications.controller.js';
 import { validarCampos } from '../middlewares/validar-campos.js';
 import { existePublicacionById, existePublicacionByName } from '../middlewares/publicacion-validar.js';
 import { validarJWT } from '../middlewares/validar-jwt.js';
-//import { verificarPropietario } from '../middlewares/publicacion-validar.js'
 
 routerin.get(
     "/",
     publicationsGet
+);
+
+routerin.get(
+    '/:id',
+    [
+        check('id', 'El id no es un formato valido de MongoDB').isMongoId(),
+        check('id').custom(existePublicacionById),
+    ],
+    getPublicationById
 );
 
 
@@ -42,7 +50,6 @@ routerin.delete(
     "/:id",
     [
         check("id", "el id no es un formato valido de MongoDB").isMongoId(),
-       // check("id").custom(existePublicacionById),
         validarJWT,
         validarCampos
     ],
